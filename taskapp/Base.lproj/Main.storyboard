@@ -158,6 +158,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AI1-El-yqy"/>
                     </view>
+                    <navigationItem key="navigationItem" id="oD8-mF-gp9">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Qpz-X1-18i">
+                            <connections>
+                                <action selector="tappedSaveButton:" destination="ofu-gc-JZZ" id="KsD-cs-x8K"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="categoryTextField" destination="pnV-UJ-cIY" id="eCR-er-cAd"/>
                         <outlet property="contentsTextView" destination="2EI-XJ-Ksb" id="ebh-lW-amo"/>

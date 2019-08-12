@@ -7,23 +7,22 @@
 //
 
 import UIKit
-import RealmSwift   // ←追加
-import UserNotifications    // 追加
+import RealmSwift
+import UserNotifications
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     
     // Realmインスタンスを取得する
-    let realm = try! Realm()  // ←追加
+    private let realm = try! Realm()
     
     // DB内のタスクが格納されるリスト。
     // 日付近い順\順でソート：降順
     // 以降内容をアップデートするとリスト内は自動的に更新される。
-    var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)  // ←追加
+    private var taskArray = try! Realm().objects(Task.self).sorted(byKeyPath: "date", ascending: false)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
     }
@@ -33,12 +32,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let inputViewController:InputViewController = segue.destination as! InputViewController
         
         if segue.identifier == "cellSegue" {
+            // セルが押された時の処理
             let indexPath = self.tableView.indexPathForSelectedRow
             inputViewController.task = taskArray[indexPath!.row]
         } else {
+            // それ以外(Addボタンをosaretatoki)
             let task = Task()
             task.date = Date()
             
+            // idに最新の番号を振る
             let allTasks = realm.objects(Task.self)
             if allTasks.count != 0 {
                 task.id = allTasks.max(ofProperty: "id")! + 1
@@ -57,7 +59,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: UITableViewDataSourceプロトコルのメソッド
     // データの数（＝セルの数）を返すメソッド
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return taskArray.count  // ←修正する
+        return taskArray.count
     }
     
     // 各セルの内容を返すメソッド
@@ -65,7 +67,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // 再利用可能な cell を得る
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        // Cellに値を設定する.  --- ここから ---
+        // Cellに値を設定する
         let task = taskArray[indexPath.row]
         cell.textLabel?.text = task.title
         
@@ -74,7 +76,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let dateString:String = formatter.string(from: task.date)
         cell.detailTextLabel?.text = dateString
-        // --- ここまで追加 ---
         
         return cell
     }
@@ -82,7 +83,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // MARK: UITableViewDelegateプロトコルのメソッド
     // 各セルを選択した時に実行されるメソッド
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "cellSegue", sender: nil) // ←追加する
+        performSegue(withIdentifier: "cellSegue", sender: nil)
     }
     
     // セルが削除が可能なことを伝えるメソッド
@@ -92,7 +93,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     // Delete ボタンが押された時に呼ばれるメソッド
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        // --- ここから ---
         if editingStyle == .delete {
             // 削除するタスクを取得する
             let task = self.taskArray[indexPath.row]
@@ -115,6 +115,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                     print("---------------/")
                 }
             }
-        } // --- ここまで変更 ---
+        }
     }
 }
