@@ -48,8 +48,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="TQO-9g-jkf">
-                                <rect key="frame" x="0.0" y="64" width="336" height="56"/>
+                            <searchBar contentMode="redraw" placeholder="カテゴリを検索" translatesAutoresizingMaskIntoConstraints="NO" id="TQO-9g-jkf">
+                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
