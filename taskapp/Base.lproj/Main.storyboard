@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="shh-Um-aCy">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" textLabel="dDW-CE-dBb" detailTextLabel="JOd-hO-Zh2" style="IBUITableViewCellStyleSubtitle" id="pF5-Y9-3II">
@@ -48,13 +48,20 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="TQO-9g-jkf">
+                                <rect key="frame" x="0.0" y="64" width="336" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="shh-Um-aCy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3X7-n9-eb3"/>
-                            <constraint firstItem="shh-Um-aCy" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="Glo-dT-yFe"/>
-                            <constraint firstItem="shh-Um-aCy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="OPG-gh-LNN"/>
-                            <constraint firstItem="shh-Um-aCy" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cX5-42-HnW"/>
+                            <constraint firstItem="shh-Um-aCy" firstAttribute="top" secondItem="TQO-9g-jkf" secondAttribute="bottom" id="DY6-hM-jFl"/>
+                            <constraint firstItem="shh-Um-aCy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="R6b-Yn-Vrs"/>
+                            <constraint firstItem="TQO-9g-jkf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ghr-vY-81A"/>
+                            <constraint firstItem="shh-Um-aCy" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="jJ7-o9-SCh"/>
+                            <constraint firstItem="shh-Um-aCy" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="kZV-ty-nPH"/>
+                            <constraint firstItem="TQO-9g-jkf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oZk-cQ-gHS"/>
+                            <constraint firstItem="TQO-9g-jkf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xYL-0K-yp7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -66,13 +73,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="TQO-9g-jkf" id="rSX-79-YJh"/>
                         <outlet property="tableView" destination="shh-Um-aCy" id="R44-xM-c8z"/>
                         <segue destination="ofu-gc-JZZ" kind="show" identifier="cellSegue" id="NHm-PN-7wf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1128.75" y="128.87323943661971"/>
+            <point key="canvasLocation" x="1127.2" y="128.18590704647679"/>
         </scene>
         <!--Input View Controller-->
         <scene sceneID="lMn-m4-ALn">
